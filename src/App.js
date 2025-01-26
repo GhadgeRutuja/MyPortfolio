@@ -22,7 +22,7 @@ function App() {
         <section id="contact" className="w-full min-h-screen"><Contact /></section>
       </main>
       <footer className="w-full text-center py-4 text-[#8892b0]">
-        © {new Date().getFullYear()} Your Name. All rights reserved.
+        © {new Date().getFullYear()} Rutuja Ghadge. All rights reserved.
       </footer>
     </div>
   );

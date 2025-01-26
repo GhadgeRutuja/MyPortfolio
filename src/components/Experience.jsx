@@ -7,7 +7,7 @@ const Experience = () => {
       id: 1,
       title: "Web Developer Intern",
       company: "Cloud Counselage Pvt. Ltd.",
-      date: "June 2023 - August 2023",
+      date: "June 2024 - Oct 2024",
       description: "Worked on developing and maintaining web applications using React and Node.js.",
      
       offerLetterPdf: "/cloudinternship.png",
@@ -17,7 +17,7 @@ const Experience = () => {
       id: 2,
       title: "C++ Intern",
       company: "Technohacks EduTech",
-      date: "September 2023 - Present",
+      date: "Dec 2023 - Jan 2024",
       description:
         "Responsible for creating responsive and user-friendly websites for clients across various industries.",
      
