@@ -12,7 +12,7 @@ const Projects = () => {
       image: "/Portfolio.png",
       category: "WEBSITES",
       techStack: ["React.js", "Tailwind CSS", "Figma",  "JavaScript"],
-      githubUrl: "https://github.com/yourusername/podstream",
+      githubUrl: "https://github.com/GhadgeRutuja/Rutuja-s-Portfolio/tree/master",
      
     },
     {
