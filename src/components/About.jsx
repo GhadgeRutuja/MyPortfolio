@@ -55,7 +55,7 @@ const About = () => {
 
           {/* Resume Button */}
           <a
-            href="/Rutuja_Resume(DEC).pdf"
+            href="/RutujaGhadge_Resume (4).pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 border-2 border-[#64ffda] text-[#64ffda] rounded hover:bg-[#64ffda] hover:bg-opacity-10 transition-all duration-300 font-mono"

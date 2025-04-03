@@ -60,7 +60,7 @@ const Experience = () => {
                     href={exp.offerLetterPdf}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#64ffda] text-[#0a192f] px-3 py-1.5 rounded hover:bg-opacity-80 transition-all duration-300 flex items-center flex-1 justify-center"
+                    className="bg-[#ccd6f6] text-[#0a192f] px-3 py-1.5 rounded hover:bg-opacity-80 transition-all duration-300 flex items-center flex-1 justify-center"
                   >
                     Offer Letter
                   </a>
@@ -68,7 +68,7 @@ const Experience = () => {
                     href={exp.experienceLetterPdf}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#64ffda] text-[#0a192f] px-4 py-2 rounded hover:bg-opacity-80 transition-all duration-300 flex items-center flex-1 justify-center"
+                    className="bg-[#ccd6f6] text-[#0a192f] px-4 py-2 rounded border border-[#0a192f] hover:bg-opacity-80 transition-all duration-300 flex items-center flex-1 justify-center"
                   >
                     Experience Letter
                   </a>
