@@ -8,7 +8,7 @@ const Education = () => {
       title: "Bachelor of Engineering in Computer Science",
       institution: "Sandip Institute of Technology and Research Center, Nashik",
       year: "2022 - 2026",
-      score: "8.16 CGPA",
+      score: "8.86 CGPA",
       icon: FaGraduationCap,
     },
     {
