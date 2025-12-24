@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa';
+import React from 'react'
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa'
 
 const Contact = () => {
   const contactInfo = [
@@ -35,52 +35,102 @@ const Contact = () => {
       link: 'tel:+918010876380',
       bgColor: 'hover:bg-[#075e54]'
     }
-  ];
+  ]
 
   return (
-    <div className="min-h-screen bg-[#0a192f] py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="relative z-10 min-h-screen bg-[#0a192f] py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#ccd6f6] mb-4">Contact Me</h2>
-          <p className="text-[#8892b0] text-lg max-w-2xl mx-auto">
-            Feel free to reach out to me through any of these platforms
+        <div className="text-center mb-14 animate-fade-in-down">
+          <h2 className="text-5xl font-bold text-[#ccd6f6] mb-4 relative inline-block">
+            Contact
+            <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#64ffda] to-[#00bfff] rounded-full"></span>
+          </h2>
+          <p className="text-[#8892b0] text-lg max-w-2xl mx-auto mt-4">
+            Let’s build something great together. Reach out via your favorite channel.
           </p>
         </div>
 
-        {/* Contact Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {contactInfo.map((contact) => (
-            <a
-              key={contact.id}
-              href={contact.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`bg-[#112240] rounded-lg p-6 transform hover:-translate-y-2 transition-all duration-300 ${contact.bgColor} group`}
-            >
-              <div className="flex flex-col items-center text-center space-y-4">
-                <contact.icon className="w-8 h-8 text-[#64ffda] group-hover:text-white transition-colors duration-300" />
-                <h3 className="text-[#ccd6f6] font-medium text-lg group-hover:text-white">
-                  {contact.title}
-                </h3>
-                <p className="text-[#8892b0] text-sm group-hover:text-white">
-                  {contact.value}
-                </p>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10">
+          {/* Left: message card */}
+          <div className="relative bg-gradient-to-br from-[#112240] to-[#0a192f] border border-[#233554] rounded-2xl p-8 sm:p-10 shadow-xl hover:shadow-2xl hover:shadow-[#64ffda]/20 transition-all duration-500 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#64ffda]/0 via-[#64ffda]/6 to-[#00bfff]/0 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative z-10 space-y-6">
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#ccd6f6]">Let’s talk!</h3>
+              <p className="text-[#8892b0] leading-relaxed">
+                Have a project in mind or want to collaborate? Drop me a message and I’ll get back to you soon.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="mailto:ghadgerutuja04@gmail.com"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-[#64ffda] to-[#00bfff] text-[#0a192f] font-semibold shadow-lg hover:shadow-[#64ffda]/40 transform hover:scale-105 transition-all"
+                >
+                  <FaEnvelope />
+                  Email me
+                </a>
+                <a
+                  href="tel:+918010876380"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[#64ffda] text-[#64ffda] font-semibold hover:bg-[#64ffda]/10 transition-all"
+                >
+                  <FaPhone />
+                  Call now
+                </a>
               </div>
-            </a>
-          ))}
+            </div>
+          </div>
+
+          {/* Right: contact links */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {contactInfo.map((contact, index) => (
+              <a
+                key={contact.id}
+                href={contact.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-[#112240] border border-[#233554] rounded-2xl p-6 flex flex-col gap-3 hover:border-[#64ffda] hover:-translate-y-2 transition-all duration-400 shadow-lg hover:shadow-[#64ffda]/25 animate-card"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="p-3 rounded-xl bg-[#64ffda]/10 text-[#64ffda] group-hover:bg-[#64ffda] group-hover:text-[#0a192f] transition-all">
+                    <contact.icon className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs font-semibold text-[#8892b0]">Tap to open</span>
+                </div>
+                <div>
+                  <h3 className="text-[#ccd6f6] font-semibold text-lg group-hover:text-[#64ffda] transition-colors">
+                    {contact.title}
+                  </h3>
+                  <p className="text-[#8892b0] text-sm mt-1 break-words group-hover:text-[#ccd6f6]">
+                    {contact.value}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
 
-        {/* Additional Contact Message */}
-        <div className="text-center mt-16">
-          <p className="text-[#8892b0] text-lg">
-            Looking forward to hearing from you!
-          </p>
+        {/* Footer note */}
+        <div className="text-center mt-16 text-[#8892b0]">
+          <p>Always open to exciting opportunities and collaborations.</p>
         </div>
       </div>
-    </div>
-  );
-};
 
-export default Contact;
+      {/* Animations */}
+      <style>{`
+        @keyframes fade-in-down {
+          from { opacity: 0; transform: translateY(-12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slide-up {
+          from { opacity: 0; transform: translateY(16px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-down { animation: fade-in-down 0.6s ease-out; }
+        .animate-card { animation: slide-up 0.55s ease-out forwards; opacity: 0; }
+      `}</style>
+    </div>
+  )
+}
+
+export default Contact
 

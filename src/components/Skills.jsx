@@ -22,35 +22,84 @@ const Skills = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a192f] py-20 px-4 sm:px-6 lg:px-8">
+    <div className="relative z-10 min-h-screen bg-[#0a192f] py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#ccd6f6] mb-4">Skills</h2>
-          <p className="text-[#8892b0] text-lg max-w-2xl mx-auto">
-            Here are the technologies and tools I work with
+        {/* Section Header with Animation */}
+        <div className="text-center mb-20 animate-fade-in-down">
+          <h2 className="text-5xl font-bold text-[#ccd6f6] mb-4 relative inline-block">
+            Skills & Technologies
+            <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#64ffda] to-[#00bfff] rounded-full"></span>
+          </h2>
+          <p className="text-[#8892b0] text-lg max-w-2xl mx-auto mt-6">
+            Here are the technologies and tools I work with to bring ideas to life
           </p>
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 xl:gap-12">
+        {/* Skills Grid with Staggered Animation */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 xl:gap-8">
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="bg-[#112240] rounded-lg p-6 transform hover:-translate-y-2 transition-all duration-300 group"
+              className="group relative bg-gradient-to-br from-[#112240] to-[#0a192f] rounded-2xl p-6 border border-[#233554] hover:border-[#64ffda] transform hover:-translate-y-3 hover:scale-105 transition-all duration-500 animate-scale-in shadow-lg hover:shadow-2xl hover:shadow-[#64ffda]/20"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="flex flex-col items-center space-y-4">
-                <div className="w-20 h-20 flex items-center justify-center rounded-full bg-[#1a1a1a] group-hover:bg-[#64ffda]/10 transition-colors duration-300">
-                  <skill.icon className={`w-10 h-10 ${skill.color} group-hover:text-[#64ffda]`} />
+              {/* Neon Glow Effect on Hover */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#64ffda]/0 via-[#64ffda]/10 to-[#00bfff]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="relative z-10 flex flex-col items-center space-y-4">
+                {/* Icon Container with Gradient Background */}
+                <div className="relative w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#1a1a1a] to-[#0a192f] group-hover:from-[#64ffda]/20 group-hover:to-[#00bfff]/20 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
+                  {/* Animated border */}
+                  <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#64ffda] transition-all duration-500"></div>
+                  <skill.icon className={`w-10 h-10 ${skill.color} group-hover:scale-110 transition-transform duration-300`} />
                 </div>
-                <h3 className="text-[#ccd6f6] font-medium text-lg group-hover:text-[#64ffda]">
+                
+                {/* Skill Name */}
+                <h3 className="text-[#ccd6f6] font-semibold text-base text-center group-hover:text-[#64ffda] transition-colors duration-300">
                   {skill.name}
                 </h3>
               </div>
+
+              {/* Corner Accent */}
+              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#64ffda]/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* CSS Animation Styles */}
+      <style jsx>{`
+        @keyframes fade-in-down {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes scale-in {
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        .animate-fade-in-down {
+          animation: fade-in-down 0.6s ease-out;
+        }
+
+        .animate-scale-in {
+          animation: scale-in 0.5s ease-out forwards;
+          opacity: 0;
+        }
+      `}</style>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -10,6 +11,7 @@ import Contact from './components/Contact';
 
 function App() {
   return (
+   
     <div className="w-screen min-h-screen bg-[#0a192f] overflow-x-hidden">
       <Navbar />
       <main className="w-full pt-16">
