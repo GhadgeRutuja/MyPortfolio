@@ -38,7 +38,7 @@ const Navbar = () => {
           {/* Brand */}
           <button
             onClick={() => scrollToSection('about')}
-            className="flex items-center gap-2 text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#64ffda] to-[#00bfff]"
+            className="flex items-center gap-2 text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#64ffda] to-[#00bfff]"
           >
             Rutuja
             <span className="h-2 w-2 rounded-full bg-[#64ffda] animate-pulse"></span>
@@ -50,7 +50,7 @@ const Navbar = () => {
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="relative px-3 py-2 text-sm font-semibold text-[#ccd6f6] capitalize transition-colors duration-300 hover:text-[#64ffda]"
+                className="group relative px-3 py-2 text-base md:text-lg font-semibold text-[#ccd6f6] capitalize transition-colors duration-300 hover:text-[#64ffda]"
               >
                 <span>{item}</span>
                 <span className="pointer-events-none absolute left-1/2 -bottom-1 h-0.5 w-0 bg-gradient-to-r from-[#64ffda] to-[#00bfff] transition-all duration-300 -translate-x-1/2 group-hover:w-full"></span>
@@ -87,7 +87,7 @@ const Navbar = () => {
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="w-full text-left px-4 py-3 rounded-lg text-[#ccd6f6] font-semibold capitalize bg-[#112240] hover:bg-[#64ffda]/10 hover:text-[#64ffda] transition-all"
+                className="w-full text-left px-4 py-3 rounded-lg text-[#ccd6f6] text-lg font-semibold capitalize bg-[#112240] hover:bg-[#64ffda]/10 hover:text-[#64ffda] transition-all"
               >
                 {item}
               </button>

@@ -5,7 +5,7 @@ const Education = () => {
   const education = [
     {
       id: 1,
-      title: "Bachelor of Engineering in Computer Science",
+      title: "Bachelor of Engineering in Computers",
       institution: "Sandip Institute of Technology and Research Center, Nashik",
       year: "2022 - 2026",
       score: "8.98 CGPA",
@@ -41,55 +41,123 @@ const Education = () => {
           <p className="text-[#8892b0] text-lg mt-6">My academic journey and achievements</p>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 gap-8 lg:gap-10">
-          {education.map((item, index) => (
-            <div
-              key={item.id}
-              className="group relative bg-gradient-to-br from-[#112240] to-[#0a192f] rounded-2xl border border-[#233554] hover:border-[#64ffda] overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#64ffda]/25 transform hover:-translate-y-2 transition-all duration-500 animate-card"
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
-              {/* Glow overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#64ffda]/0 via-[#64ffda]/8 to-[#00bfff]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        {/* Roadmap Timeline */}
+        <div className="relative">
+          {/* Center vertical line */}
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#64ffda] via-[#00bfff] to-[#64ffda] opacity-40"></div>
 
-              <div className="relative z-10 flex flex-col h-full p-6 sm:p-8 gap-4">
-                {/* Top row */}
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="p-3 rounded-xl bg-gradient-to-br from-[#64ffda] to-[#00bfff] shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                      <item.icon className="text-[#0a192f] text-2xl sm:text-3xl" />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-xs font-mono text-[#64ffda] bg-[#64ffda]/10 px-3 py-1 rounded-full">{item.year}</span>
-                      <span className="text-sm text-[#8892b0] mt-1">Score: <span className="text-[#64ffda] font-semibold">{item.score}</span></span>
-                    </div>
+          <div className="space-y-12 md:space-y-16">
+            {education.map((item, index) => (
+              <div key={item.id} className="relative">
+                {/* Mobile (vertical with left dot) */}
+                <div className="md:hidden flex items-start gap-4">
+                  {/* Dot */}
+                  <div className="relative flex-shrink-0 mt-1">
+                    <span className="block h-3 w-3 rounded-full bg-gradient-to-br from-[#64ffda] to-[#00bfff] shadow-[0_0_12px_rgba(100,255,218,0.6)] animate-pulse"></span>
+                    <span className="absolute left-1/2 -translate-x-1/2 top-3 h-12 w-px bg-[#233554]"></span>
                   </div>
-                  <div className="p-2 rounded-lg bg-[#64ffda]/10 text-[#64ffda]">
-                    <FaAward className="text-lg" />
+                  {/* Card */}
+                  <div className="group bg-gradient-to-br from-[#112240] to-[#0a192f] rounded-2xl border border-[#233554] hover:border-[#64ffda] p-6 w-full shadow-lg hover:shadow-2xl hover:shadow-[#64ffda]/25 transition-all duration-500 animate-card">
+                    {/* Top row (original inner layout) */}
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div className="flex items-center gap-3">
+                        <div className="p-3 rounded-xl bg-gradient-to-br from-[#64ffda] to-[#00bfff] shadow-lg">
+                          <item.icon className="text-[#0a192f] text-2xl" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-mono text-[#64ffda] bg-[#64ffda]/10 px-3 py-1 rounded-full">{item.year}</span>
+                          <span className="text-sm text-[#8892b0] mt-1">Score: <span className="text-[#64ffda] font-semibold">{item.score}</span></span>
+                        </div>
+                      </div>
+                      <div className="p-2 rounded-lg bg-[#64ffda]/10 text-[#64ffda]">
+                        <FaAward className="text-lg" />
+                      </div>
+                    </div>
+                    {/* Body */}
+                    <h3 className="text-lg sm:text-xl font-bold text-[#ccd6f6] leading-tight group-hover:text-[#64ffda] transition-colors">{item.title}</h3>
+                    <p className="text-[#8892b0] mt-2">{item.institution}</p>
+                    {/* Footer accent */}
+                    <div className="flex items-center gap-2 text-[#8892b0] text-sm mt-4">
+                      <span className="h-px w-10 bg-[#233554]"></span>
+                      <span>Milestone achieved</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Body */}
-                <div className="flex-1 flex flex-col gap-3">
-                  <h3 className="text-xl font-bold text-[#ccd6f6] leading-tight group-hover:text-[#64ffda] transition-colors duration-300">
-                    {item.title}
-                  </h3>
-                  <p className="text-[#8892b0] text-base leading-relaxed">
-                    {item.institution}
-                  </p>
-                </div>
+                {/* Desktop (alternating left/right) */}
+                <div className="hidden md:grid md:grid-cols-3 md:gap-2 items-center">
+                  {/* Left card for even, empty for odd */}
+                  <div className={`${index % 2 === 0 ? '' : 'md:opacity-0 md:pointer-events-none'}`}>
+                    {index % 2 === 0 && (
+                      <div className="ml-auto md:-mr-2 max-w-[92%] group bg-gradient-to-br from-[#112240] to-[#0a192f] rounded-2xl border border-[#233554] hover:border-[#64ffda] p-8 shadow-lg hover:shadow-2xl hover:shadow-[#64ffda]/25 transition-all duration-500 animate-left" style={{ animationDelay: `${index * 0.12}s` }}>
+                        {/* Top row (original inner layout) */}
+                        <div className="flex items-start justify-between gap-3 mb-3">
+                          <div className="flex items-center gap-3">
+                            <div className="p-3 rounded-xl bg-gradient-to-br from-[#64ffda] to-[#00bfff] shadow-lg">
+                              <item.icon className="text-[#0a192f] text-2xl" />
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-xs font-mono text-[#64ffda] bg-[#64ffda]/10 px-3 py-1 rounded-full">{item.year}</span>
+                              <span className="text-sm text-[#8892b0] mt-1">Score: <span className="text-[#64ffda] font-semibold">{item.score}</span></span>
+                            </div>
+                          </div>
+                          <div className="p-2 rounded-lg bg-[#64ffda]/10 text-[#64ffda]">
+                            <FaAward className="text-lg" />
+                          </div>
+                        </div>
+                        {/* Body */}
+                        <h3 className="text-xl font-bold text-[#ccd6f6] leading-tight group-hover:text-[#64ffda] transition-colors">{item.title}</h3>
+                        <p className="text-[#8892b0] mt-2">{item.institution}</p>
+                        {/* Footer accent */}
+                        <div className="flex items-center gap-2 text-[#8892b0] text-sm mt-4">
+                          <span className="h-px w-10 bg-[#233554]"></span>
+                          <span>Milestone achieved</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
 
-                {/* Footer accent */}
-                <div className="flex items-center gap-2 text-[#8892b0] text-sm">
-                  <span className="h-px w-10 bg-[#233554]"></span>
-                  <span>Milestone achieved</span>
+                  {/* Center dot */}
+                  <div className="flex items-center justify-center">
+                    <div className="relative">
+                      <span className="block h-4 w-4 rounded-full bg-gradient-to-br from-[#64ffda] to-[#00bfff] ring-4 ring-[#0a192f] shadow-[0_0_18px_rgba(100,255,218,0.6)]"></span>
+                    </div>
+                  </div>
+
+                  {/* Right card for odd, empty for even */}
+                  <div className={`${index % 2 !== 0 ? '' : 'md:opacity-0 md:pointer-events-none'}`}>
+                    {index % 2 !== 0 && (
+                      <div className="mr-auto md:-ml-2 max-w-[92%] group bg-gradient-to-br from-[#112240] to-[#0a192f] rounded-2xl border border-[#233554] hover:border-[#64ffda] p-8 shadow-lg hover:shadow-2xl hover:shadow-[#64ffda]/25 transition-all duration-500 animate-right" style={{ animationDelay: `${index * 0.12}s` }}>
+                        {/* Top row (original inner layout) */}
+                        <div className="flex items-start justify-between gap-3 mb-3">
+                          <div className="flex items-center gap-3">
+                            <div className="p-3 rounded-xl bg-gradient-to-br from-[#64ffda] to-[#00bfff] shadow-lg">
+                              <item.icon className="text-[#0a192f] text-2xl" />
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-xs font-mono text-[#64ffda] bg-[#64ffda]/10 px-3 py-1 rounded-full">{item.year}</span>
+                              <span className="text-sm text-[#8892b0] mt-1">Score: <span className="text-[#64ffda] font-semibold">{item.score}</span></span>
+                            </div>
+                          </div>
+                          <div className="p-2 rounded-lg bg-[#64ffda]/10 text-[#64ffda]">
+                            <FaAward className="text-lg" />
+                          </div>
+                        </div>
+                        {/* Body */}
+                        <h3 className="text-xl font-bold text-[#ccd6f6] leading-tight group-hover:text-[#64ffda] transition-colors">{item.title}</h3>
+                        <p className="text-[#8892b0] mt-2">{item.institution}</p>
+                        {/* Footer accent */}
+                        <div className="flex items-center gap-2 text-[#8892b0] text-sm mt-4">
+                          <span className="h-px w-10 bg-[#233554]"></span>
+                          <span>Milestone achieved</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-
-              {/* Corner Accent */}
-              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#64ffda]/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
@@ -117,6 +185,15 @@ const Education = () => {
           }
         }
 
+        @keyframes slide-in-left {
+          from { opacity: 0; transform: translateX(-24px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slide-in-right {
+          from { opacity: 0; transform: translateX(24px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+
         .animate-fade-in-down {
           animation: fade-in-down 0.6s ease-out;
         }
@@ -125,6 +202,8 @@ const Education = () => {
           animation: slide-in-up 0.65s ease-out forwards;
           opacity: 0;
         }
+        .animate-left { animation: slide-in-left 0.6s ease-out forwards; opacity: 0; }
+        .animate-right { animation: slide-in-right 0.6s ease-out forwards; opacity: 0; }
       `}</style>
     </div>
   )
