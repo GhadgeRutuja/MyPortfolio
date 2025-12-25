@@ -14,7 +14,16 @@ const About = () => {
   };
 
   return (
-    <div className="relative z-10 min-h-screen bg-[#0a192f] flex items-center justify-center px-4 sm:px-4 lg:px-8">
+    <div className="relative z-10 min-h-screen bg-[#0a192f] flex items-center justify-center px-4 sm:px-4 lg:px-8 overflow-hidden">
+      {/* Local neon glow + sparkles for About */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="absolute -top-40 left-[18%] h-72 w-72 bg-[#64ffda]/16 blur-[140px] opacity-80 animate-pulse"></div>
+        <div className="absolute top-1/2 -translate-y-1/2 right-[10%] h-96 w-96 bg-[#0ea5e9]/14 blur-[170px] opacity-70 animate-pulse"></div>
+        <div className="absolute bottom-[-12%] left-[26%] h-80 w-80 bg-[#64ffda]/12 blur-[150px] opacity-65 animate-pulse"></div>
+        <div className="about-sparkle-layer"></div>
+        <div className="about-neon-grid"></div>
+      </div>
+
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Left Content */}
         <div className="w-full md:w-1/2 space-y-6 animate-slide-in-left">
@@ -131,6 +140,47 @@ const About = () => {
             opacity: 1;
             transform: translateX(0);
           }
+        }
+
+        .about-sparkle-layer {
+          position: absolute;
+          inset: 0;
+          background-image:
+            radial-gradient(2px 2px at 16% 22%, rgba(100, 255, 218, 0.75), transparent),
+            radial-gradient(2px 2px at 76% 26%, rgba(14, 165, 233, 0.82), transparent),
+            radial-gradient(2px 2px at 30% 72%, rgba(100, 255, 218, 0.72), transparent),
+            radial-gradient(2px 2px at 62% 58%, rgba(14, 165, 233, 0.82), transparent),
+            radial-gradient(3px 3px at 48% 44%, rgba(255, 255, 255, 0.38), transparent),
+            radial-gradient(2px 2px at 88% 68%, rgba(100, 255, 218, 0.58), transparent),
+            radial-gradient(2px 2px at 10% 84%, rgba(14, 165, 233, 0.58), transparent);
+          background-size: 22% 22%;
+          mix-blend-mode: screen;
+          opacity: 0.75;
+          animation: about-sparkle-shift 13s ease-in-out infinite alternate;
+        }
+
+        .about-neon-grid {
+          position: absolute;
+          inset: -12%;
+          background-image:
+            linear-gradient(90deg, rgba(100, 255, 218, 0.07) 1px, transparent 1px),
+            linear-gradient(0deg, rgba(14, 165, 233, 0.07) 1px, transparent 1px);
+          background-size: 150px 150px;
+          mask-image: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.82), transparent 70%);
+          -webkit-mask-image: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.82), transparent 70%);
+          opacity: 0.4;
+          mix-blend-mode: screen;
+          animation: about-grid-pan 24s linear infinite;
+        }
+
+        @keyframes about-sparkle-shift {
+          from { transform: translate3d(0, 0, 0); opacity: 0.6; }
+          to { transform: translate3d(14px, -10px, 0); opacity: 0.9; }
+        }
+
+        @keyframes about-grid-pan {
+          from { transform: translate3d(0, 0, 0); }
+          to { transform: translate3d(-130px, -88px, 0); }
         }
 
         .animate-fade-in {

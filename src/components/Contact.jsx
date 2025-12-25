@@ -38,7 +38,16 @@ const Contact = () => {
   ]
 
   return (
-    <div className="relative z-10 min-h-screen bg-[#0a192f] py-20 px-4 sm:px-6 lg:px-8">
+    <div className="relative z-10 min-h-screen bg-[#0a192f] py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Local neon glow + sparkles for Contact */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="absolute -top-36 left-[16%] h-72 w-72 bg-[#64ffda]/16 blur-[140px] opacity-80 animate-pulse"></div>
+        <div className="absolute top-[42%] right-[10%] h-96 w-96 bg-[#0ea5e9]/14 blur-[170px] opacity-70 animate-pulse"></div>
+        <div className="absolute bottom-[-14%] left-[26%] h-80 w-80 bg-[#64ffda]/12 blur-[150px] opacity-65 animate-pulse"></div>
+        <div className="contact-sparkle-layer"></div>
+        <div className="contact-neon-grid"></div>
+      </div>
+
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-14 animate-fade-in-down">
@@ -127,6 +136,47 @@ const Contact = () => {
         }
         .animate-fade-in-down { animation: fade-in-down 0.6s ease-out; }
         .animate-card { animation: slide-up 0.55s ease-out forwards; opacity: 0; }
+
+        .contact-sparkle-layer {
+          position: absolute;
+          inset: 0;
+          background-image:
+            radial-gradient(2px 2px at 14% 20%, rgba(100, 255, 218, 0.76), transparent),
+            radial-gradient(2px 2px at 80% 28%, rgba(14, 165, 233, 0.82), transparent),
+            radial-gradient(2px 2px at 30% 70%, rgba(100, 255, 218, 0.7), transparent),
+            radial-gradient(2px 2px at 64% 56%, rgba(14, 165, 233, 0.82), transparent),
+            radial-gradient(3px 3px at 46% 44%, rgba(255, 255, 255, 0.38), transparent),
+            radial-gradient(2px 2px at 88% 68%, rgba(100, 255, 218, 0.58), transparent),
+            radial-gradient(2px 2px at 10% 84%, rgba(14, 165, 233, 0.58), transparent);
+          background-size: 22% 22%;
+          mix-blend-mode: screen;
+          opacity: 0.75;
+          animation: contact-sparkle-shift 13s ease-in-out infinite alternate;
+        }
+
+        .contact-neon-grid {
+          position: absolute;
+          inset: -12%;
+          background-image:
+            linear-gradient(90deg, rgba(100, 255, 218, 0.07) 1px, transparent 1px),
+            linear-gradient(0deg, rgba(14, 165, 233, 0.07) 1px, transparent 1px);
+          background-size: 150px 150px;
+          mask-image: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.82), transparent 70%);
+          -webkit-mask-image: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.82), transparent 70%);
+          opacity: 0.4;
+          mix-blend-mode: screen;
+          animation: contact-grid-pan 24s linear infinite;
+        }
+
+        @keyframes contact-sparkle-shift {
+          from { transform: translate3d(0, 0, 0); opacity: 0.6; }
+          to { transform: translate3d(14px, -10px, 0); opacity: 0.9; }
+        }
+
+        @keyframes contact-grid-pan {
+          from { transform: translate3d(0, 0, 0); }
+          to { transform: translate3d(-130px, -88px, 0); }
+        }
       `}</style>
     </div>
   )

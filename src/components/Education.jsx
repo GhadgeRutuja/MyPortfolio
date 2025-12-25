@@ -30,8 +30,17 @@ const Education = () => {
   ]
 
   return (
-    <div className="relative z-10 min-h-screen bg-[#0a192f] py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
+    <div className="relative min-h-screen bg-[#0a192f] py-16 px-4 sm:py-20 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Soft glow backdrops behind the timeline */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute -top-32 left-[20%] h-80 w-80 bg-[#64ffda]/15 blur-[140px] opacity-70 animate-pulse"></div>
+        <div className="absolute top-[32%] -left-40 h-96 w-96 bg-[#0ea5e9]/12 blur-[160px] opacity-70 animate-pulse"></div>
+        <div className="absolute bottom-[-18%] right-1/4 h-80 w-80 bg-[#64ffda]/12 blur-[150px] opacity-65 animate-pulse"></div>
+        <div className="sparkle-layer"></div>
+        <div className="neon-grid"></div>
+      </div>
+
+      <div className="relative z-10 max-w-5xl mx-auto">
         {/* Header with Animation */}
         <div className="text-center mb-20 animate-fade-in-down">
           <h2 className="text-5xl font-bold text-[#ccd6f6] mb-4 relative inline-block">
@@ -192,6 +201,45 @@ const Education = () => {
         @keyframes slide-in-right {
           from { opacity: 0; transform: translateX(24px); }
           to { opacity: 1; transform: translateX(0); }
+        }
+
+        .sparkle-layer {
+          position: absolute;
+          inset: 0;
+          background-image:
+            radial-gradient(2px 2px at 10% 20%, rgba(100, 255, 218, 0.75), transparent),
+            radial-gradient(2px 2px at 80% 30%, rgba(14, 165, 233, 0.8), transparent),
+            radial-gradient(2px 2px at 30% 75%, rgba(100, 255, 218, 0.7), transparent),
+            radial-gradient(2px 2px at 65% 60%, rgba(14, 165, 233, 0.8), transparent),
+            radial-gradient(3px 3px at 45% 40%, rgba(255, 255, 255, 0.35), transparent);
+          background-size: 22% 22%;
+          mix-blend-mode: screen;
+          opacity: 0.7;
+          animation: sparkle-shift 12s ease-in-out infinite alternate;
+        }
+
+        .neon-grid {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(90deg, rgba(100, 255, 218, 0.05) 1px, transparent 1px),
+            linear-gradient(0deg, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+          background-size: 140px 140px;
+          mask-image: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8), transparent 70%);
+          -webkit-mask-image: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8), transparent 70%);
+          opacity: 0.45;
+          mix-blend-mode: screen;
+          animation: grid-pan 22s linear infinite;
+        }
+
+        @keyframes sparkle-shift {
+          from { transform: translate3d(0, 0, 0); opacity: 0.55; }
+          to { transform: translate3d(12px, -10px, 0); opacity: 0.85; }
+        }
+
+        @keyframes grid-pan {
+          from { transform: translate3d(0, 0, 0); }
+          to { transform: translate3d(-120px, -80px, 0); }
         }
 
         .animate-fade-in-down {

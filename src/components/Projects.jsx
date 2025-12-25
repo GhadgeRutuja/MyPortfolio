@@ -59,8 +59,24 @@ const Projects = () => {
   }
 
   return (
-    <div className="relative z-10 min-h-screen bg-[#0a192f] py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="relative z-10 min-h-screen bg-[#0a192f] py-20 px-4 sm:px-6 lg:px-8 overflow-hidden" aria-label="Web Development Projects">
+      {/* Sparkle Effect Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="sparkle absolute"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 2}s`
+            }}
+          />
+        ))}
+      </div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header with Animation */}
         <div className="text-center mb-20 animate-fade-in-down">
           <h2 className="text-5xl font-bold text-[#ccd6f6] mb-4 relative inline-block">
@@ -196,6 +212,31 @@ const Projects = () => {
           }
         }
 
+        @keyframes sparkle {
+          0%, 100% {
+            opacity: 0;
+            transform: scale(0);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        .sparkle {
+          width: 4px;
+          height: 4px;
+          background: radial-gradient(circle, #64ffda 0%, transparent 70%);
+          border-radius: 50%;
+          animation: sparkle 3s infinite ease-in-out;
+          box-shadow: 0 0 10px #64ffda, 0 0 20px #64ffda, 0 0 30px #00bfff;
+        }
+
+        .sparkle:nth-child(odd) {
+          background: radial-gradient(circle, #00bfff 0%, transparent 70%);
+          box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #64ffda;
+        }
+
         .animate-fade-in-down {
           animation: fade-in-down 0.6s ease-out;
         }
@@ -210,7 +251,7 @@ const Projects = () => {
           opacity: 0;
         }
       `}</style>
-    </div>
+    </section>
   )
 }
 

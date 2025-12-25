@@ -10,9 +10,18 @@ import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 
 function App() {
-  return (
+    return (
    
-    <div className="w-screen min-h-screen bg-[#0a192f] overflow-x-hidden">
+    <div className="w-screen min-h-screen bg-[#0a192f] overflow-x-hidden relative">
+      {/* Global neon sparkle backdrop behind all sections */}
+      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+        <div className="absolute -top-40 left-[12%] h-72 w-72 bg-[#64ffda]/14 blur-[140px] opacity-75 animate-pulse"></div>
+        <div className="absolute top-1/3 right-[8%] h-96 w-96 bg-[#0ea5e9]/14 blur-[170px] opacity-70 animate-pulse"></div>
+        <div className="absolute bottom-0 left-[18%] h-72 w-72 bg-[#64ffda]/12 blur-[140px] opacity-65 animate-pulse"></div>
+        <div className="global-sparkle-field"></div>
+        <div className="global-neon-grid"></div>
+      </div>
+
       <Navbar />
       <main className="w-full pt-16">
         <section id="about" className="w-full min-h-screen"><About /></section>
